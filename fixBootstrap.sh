@@ -1,4 +1,5 @@
 echo "Please click \"Allow\" when it asks for permission, hit enter/return to proceed..."
+/*
 read
 clear
 app=$(find / -maxdepth 6 -name "my-eyes-deceive.app")
@@ -19,3 +20,4 @@ else
   read -p "Press enter/return to play the game."
   ./'my eyes deceive'
 fi
+*/
