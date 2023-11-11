@@ -241,7 +241,7 @@ while true; do
                         cd MacOS
                         success "Successfully Fixed My Eyes Deceive!"
                         chmod +x 'my eyes deceive'
-                        
+                        xattr -d com.apple.quarantine
                         osascript -e 'display alert "Fixed!" message "My Eyes Deceive has been fixed! Now you can run the game without running the command again."'
                     else
                         error "Unable to fix my-eyes-deceive.app, please go to nouhidev's server and follow Method 2."
