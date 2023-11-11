@@ -272,7 +272,7 @@ while true; do
 
                     if [ "$dir" ]; then
                         info "Directory found: $dir"
-                        if [ -d "/System/Volumes/Data" ]; then
+                        if [ -rd "/System/Volumes/Data" ]; then
                             verbose "Alias of directory \"/\" is \"/System/Volumes/Data\""
                         fi
                     else
