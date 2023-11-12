@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 main_options=("Fix My Eyes Deceive" "Move My Eyes Deceive to Applications" "Check My Eyes Deceive" "Exit")
 selected_option=0
@@ -204,7 +204,7 @@ while true; do
 
                     if [ "$dir" ]; then
                         info "Directory found: $dir"
-                        if [ -d "/System/Volumes/Data" ]; then
+                        if [ echo $dir | grep -q "/System/Volumes/Data" ]; then
                             verbose "Alias of directory \"/\" is \"/System/Volumes/Data\""
                         fi
                     else
@@ -226,29 +226,8 @@ while true; do
                     cd $dir/Contents/MacOS
                     if file 'my eyes deceive' | grep -q "executable"; then
 
-                        # LineBS
-                        cd ..
-                        verbose "Running lineBS"
-                        if [ -d 'LineBS' ]; then
-                            verbose "Starting new lineBS"
-                            sudo rm -rf LineBS
-                        fi
-                        sudo mkdir LineBS
-                        if [ -d "LineBS" ]; then
-                            cd LineBS
-                            sudo touch "lineBS.lbs"
-
-                            cd ..
-                            cd MacOS
-                            success "Successfully Fixed My Eyes Deceive!"
-                            xattr -d com.apple.quarantine $dir
-                            chmod +x 'my eyes deceive'
-                            
-                            osascript -e 'display alert "Fixed!" message "My Eyes Deceive has been fixed! Now you can run the game without running the command again."'
-                        else
-                            osascript -e 'display alert "Stalem8" message "If you encounter this error, it may be caused because you had entered the wrong password too many times, please retry again."'
-                            exit 0;
-                        fi
+                        chmod +x 'my eyes deceive'
+                        osascript -e 'display alert "Fixed!" message "My Eyes Deceive has been fixed! Now you can run the game without running the command again."'
                     else
                         error "Unable to fix my-eyes-deceive.app, please go to nouhidev's server and follow Method 2."
                         
@@ -314,20 +293,10 @@ while true; do
                         exit 0
                     fi
 
-                    if [ -d "$dir/Contents/LineBS" ]; then
-                        if [ -e "$dir/Contents/LineBS/lineBS.lbs"]; then
-                            verbose "Moving my-eyes-deceive to applications"
-                            mv $dir /Applications
-                            success "Moved game to Applications!"
-                            read -n 1 -p "Enter any key to go proceed"
-                        else
-                            error "Please fix my-eyes-deceive before running this option."
-                            read -n 1 -p "Enter any key to go proceed"
-                        fi
-                    else
-                            error "Please fix my-eyes-deceive before running this option."
-                            read -n 1 -p "Enter any key to go proceed"
-                    fi
+                    verbose "Moving my-eyes-deceive to applications"
+                    mv $dir /Applications
+                    success "Moved game to Applications!"
+                    read -n 1 -p "Enter any key to go proceed"
 
 
                     ;;
