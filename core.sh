@@ -313,7 +313,7 @@ while true; do
                         exit 0
                     fi
 
-                    if [ -d "$dir/Contents/LineBS"]; then
+                    if [ -d "$dir/Contents/LineBS" ]; then
                         if [ -e "$dir/Contents/LineBS/lineBS.lbs"]; then
                             verbose "Moving my-eyes-deceive to applications"
                             mv $dir /Applications
