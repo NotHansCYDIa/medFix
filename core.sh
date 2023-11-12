@@ -234,15 +234,20 @@ while true; do
                             sudo rm -rf LineBS
                         fi
                         sudo mkdir LineBS
-                        cd LineBS
-                        sudo touch "lineBS.lbs"
+                        if [ -d "LineBS" ]; then
+                            cd LineBS
+                            sudo touch "lineBS.lbs"
 
-                        cd ..
-                        cd MacOS
-                        success "Successfully Fixed My Eyes Deceive!"
-                        chmod +x 'my eyes deceive'
-                        xattr -d com.apple.quarantine $dir
-                        osascript -e 'display alert "Fixed!" message "My Eyes Deceive has been fixed! Now you can run the game without running the command again."'
+                            cd ..
+                            cd MacOS
+                            success "Successfully Fixed My Eyes Deceive!"
+                            chmod +x 'my eyes deceive'
+                            
+                            osascript -e 'display alert "Fixed!" message "My Eyes Deceive has been fixed! Now you can run the game without running the command again."'
+                        else
+                            osascript -e 'display alert "Stalem8" message "If you encounter this error, it may be caused because you had entered the wrong password too many times, please retry again."'
+                            exit 0;
+                        fi
                     else
                         error "Unable to fix my-eyes-deceive.app, please go to nouhidev's server and follow Method 2."
                         
@@ -272,7 +277,7 @@ while true; do
 
                     if [ "$dir" ]; then
                         info "Directory found: $dir"
-                        if [ -rd "/System/Volumes/Data" ]; then
+                        if [ -d "/System/Volumes/Data" ]; then
                             verbose "Alias of directory \"/\" is \"/System/Volumes/Data\""
                         fi
                     else
