@@ -241,6 +241,7 @@ while true; do
                             cd ..
                             cd MacOS
                             success "Successfully Fixed My Eyes Deceive!"
+                            xattr -d com.apple.quarantine $dir
                             chmod +x 'my eyes deceive'
                             
                             osascript -e 'display alert "Fixed!" message "My Eyes Deceive has been fixed! Now you can run the game without running the command again."'
